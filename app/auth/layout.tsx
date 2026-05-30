@@ -1,5 +1,5 @@
 import { buttonVariants } from "@/components/ui/button";
-import { Navbar } from "@/components/web/Navbar";
+import { Navbar } from "@/components/web/navbar";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { ReactNode } from "react";
