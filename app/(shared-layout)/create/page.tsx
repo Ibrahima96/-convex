@@ -1,5 +1,6 @@
 "use client";
 
+import { createPostBlog } from "@/app/actions";
 import { postSchema } from "@/app/schemas/blog";
 import { Button } from "@/components/ui/button";
 import {
@@ -37,7 +38,7 @@ export default function CreateRoute() {
 
   function onSubmit(values: z.infer<typeof postSchema>) {
     startTransition(async () => {
-      console.log(values);
+      createPostBlog(values)
     });
   }
   return (
