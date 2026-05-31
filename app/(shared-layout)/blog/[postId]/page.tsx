@@ -96,7 +96,7 @@ const PostDetailPage = async ({ params }: Props) => {
         {/* Main Content */}
         <Card className="border-none shadow-none bg-transparent">
           <CardContent className="p-0 prose dark:prose-invert max-w-none">
-            <p className="text-lg leading-relaxed text-foreground whitespace-pre-wrap font-light tracking-wide">
+            <p className="text-lg leading-relaxed text-foreground whitespace-pre-wrap font-light tracking-wide px-4">
               {post.body}
             </p>
           </CardContent>
