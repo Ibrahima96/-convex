@@ -22,6 +22,7 @@ export const createAuth = (ctx: GenericCtx<DataModel>) => {
       requireEmailVerification: false,
       
     },
+     
     plugins: [
       // The Convex plugin is required for Convex compatibility
       convex({ authConfig }),

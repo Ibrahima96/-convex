@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "images.unsplash.com",
+        hostname: "flippant-wolf-920.eu-west-1.convex.cloud",
         protocol: "https",
         port: "",
       },

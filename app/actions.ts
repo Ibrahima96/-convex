@@ -5,6 +5,7 @@ import { postSchema } from "./schemas/blog";
 import { api } from "@/convex/_generated/api";
 import { redirect } from "next/navigation";
 import { getToken } from "@/lib/auth-server";
+import { revalidatePath } from "next/cache";
 
 // Action côté serveur appelée depuis un formulaire ou un composant React.
 // Elle valide les données, télécharge l'image et crée un nouveau post dans Convex.
@@ -61,5 +62,6 @@ export default async function createBlogAction(
   }
 
   // Après la création, on redirige l'utilisateur vers la page /blog.
+  revalidatePath("/blog")
   return redirect("/blog");
 }
