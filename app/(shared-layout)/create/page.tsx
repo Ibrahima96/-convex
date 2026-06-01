@@ -26,20 +26,19 @@ import z from "zod";
 
 export default function CreateRoute() {
   const [isPending, startTransition] = useTransition();
- 
+
   const form = useForm({
     resolver: zodResolver(postSchema),
     defaultValues: {
       content: "",
       title: "",
-      // image: undefined,
+      image: undefined,
     },
   });
 
   function onSubmit(values: z.infer<typeof postSchema>) {
     startTransition(async () => {
-     await createBlogAction(values)
-     
+      await createBlogAction(values);
     });
   }
   return (
@@ -97,7 +96,7 @@ export default function CreateRoute() {
                 )}
               />
 
-              {/* <Controller
+              <Controller
                 name="image"
                 control={form.control}
                 render={({ field, fieldState }) => (
@@ -108,8 +107,8 @@ export default function CreateRoute() {
                       placeholder="Super cool blog content"
                       type="file"
                       accept="image/*"
-                      onChange={(event) => {
-                        const file = event.target.files?.[0];
+                      onChange={(e) => {
+                        const file = e.target.files?.[0];
                         field.onChange(file);
                       }}
                     />
@@ -118,7 +117,7 @@ export default function CreateRoute() {
                     )}
                   </Field>
                 )}
-              /> */}
+              />
 
               <Button disabled={isPending}>
                 {isPending ? (
