@@ -28,10 +28,8 @@ const Blogpage = async () => {
             <div className="relative h-62 w-full">
               <Image
                 alt="post image"
-                fill
-                src={
-                  "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&auto=format&fit=crop&q=60"
-                }
+                fill={true}
+                src={post.imageUrl || "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&auto=format&fit=crop&q=60"}
                 className="rounded-t-md object-cover"
               />
             </div>
@@ -45,7 +43,10 @@ const Blogpage = async () => {
                 </p>
               </div>
               <div className="flex items-center justify-end mt-4">
-                <Link href={`blog/${post._id}`} className={`${buttonVariants()} rounded-full` }>
+                <Link
+                  href={`blog/${post._id}`}
+                  className={`${buttonVariants()} rounded-full`}
+                >
                   Read More
                 </Link>
               </div>

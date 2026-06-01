@@ -32,14 +32,15 @@ export default function CreateRoute() {
     defaultValues: {
       content: "",
       title: "",
-      // image: undefined,
+      image: undefined,
     },
   });
 
-  function onSubmit(values: z.infer<typeof postSchema>) {
-    startTransition(async () => {
-      createPostBlog(values)
-    });
+  async function onSubmit(values: z.infer<typeof postSchema>) {
+    // Appelle la server action et attend sa complétion.
+    // L'attente est nécessaire pour que `redirect()` côté serveur
+    // soit correctement propagée vers le client.
+    await createPostBlog(values);
   }
   return (
     <div className="py-12">
@@ -96,7 +97,7 @@ export default function CreateRoute() {
                 )}
               />
 
-              {/* <Controller
+              <Controller
                 name="image"
                 control={form.control}
                 render={({ field, fieldState }) => (
@@ -117,7 +118,7 @@ export default function CreateRoute() {
                     )}
                   </Field>
                 )}
-              /> */}
+              />
 
               <Button disabled={isPending}>
                 {isPending ? (
