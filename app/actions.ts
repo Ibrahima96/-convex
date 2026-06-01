@@ -47,8 +47,8 @@ export const createPostBlog = async (values: z.infer<typeof postSchema>) => {
       };
     }
 
-    const uploadData = await uploadResponse.json();
-    const storageId = uploadData.storageId;
+    // L'upload Convex retourne le storageId directement (pas dans un objet)
+    const storageId = await uploadResponse.json();
 
     if (!storageId) {
       console.error("No storageId returned from upload");
