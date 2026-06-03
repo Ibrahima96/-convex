@@ -1,5 +1,6 @@
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import CommentSection from "@/components/web/CommentSection";
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { getToken } from "@/lib/auth-server";
@@ -39,6 +40,15 @@ export default async function PostIdRoute({ params }: PostIdRouteProps) {
   const { postId } = await params;
 
   const post = await fetchQuery(api.posts.getPostById, { postId: postId });
+  if (!post) {
+    return (
+      <div>
+        <h1 className="text-6xl font-extrabold text-red-500 p-20">
+          No post Found
+        </h1>
+      </div>
+    );
+  }
   return (
     <div className="max-w-3xl mx-auto py-8 px-4 animate-in fade-in druation-500 relative">
       <Link
@@ -74,6 +84,7 @@ export default async function PostIdRoute({ params }: PostIdRouteProps) {
       </p>
 
       <Separator className="my-8" />
+      <CommentSection/>
     </div>
   );
 }
